@@ -1,0 +1,35 @@
+{
+	"info": {
+		"_postman_id": "0dab8293-1435-4c16-8be6-d86f2561b47a",
+		"name": "fogado",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41645673",
+		"_collection_link": "https://novesz-8829019.postman.co/workspace/Eszter's-Team's-Workspace~65dd523e-be52-4b0e-8974-44a9248ffde0/collection/41645673-0dab8293-1435-4c16-8be6-d86f2561b47a?action=share&source=collection_link&creator=41645673"
+	},
+	"item": [
+		{
+			"name": "szobainformaciok",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "szobakbatoltottnapok",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "sozbanevesfoglalasok",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
