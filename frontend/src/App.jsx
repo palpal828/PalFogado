@@ -1,6 +1,6 @@
 
-
-import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './fogado.css'
 
 function App() {
   
@@ -9,20 +9,20 @@ function App() {
     <>
       <div>
         <div>
-
+          <img src="top.jpg" alt="top" className=' bg-fej mx-auto d-block'/>
         </div>
       </div>
-        <div>
+        <div id='alles' className='ontainer text-center'>
           <div>
-                <div>
+                <div className='col-4 float-start' id='bal'>
                   <h3>Napraforgós Nemzeti Tanúsító Védjegy célja</h3>
                     A falusi szálláshelyek napraforgós Nemzeti Tanúsító Védjegye a FATOSZ által több mint tíz éve létrehozott, és működtetett minősítési rendszer alapjaira épülve 2011 óta a minőségi falusi turizmus szimbóluma. A védjegy alapvető célja, hogy – összhangban az egyes szálláshelyek működtetéséről szóló 239/2009. Korm. rendeletben foglaltakkal – garanciát nyújtson a szálláshely szolgáltatás minőségének megfelelő színvonalára.  A falusi vendégházak 1-4 napraforgós besorolást nyerhetnek el a külső, belső megjelenés, a felszereltség, a szolgáltatások színvonala, valamint a szállásadó személyes felkészültségének, szakmai képzettségének függvényében. <br />
                         <p>Tájékoztató oldal</p>
-                        <img src="logo.png" alt="logó" />
-                        <img src="../public/holloko_masolata.jpg" alt="Hollókő" />
+                        <img src="logo.png" alt="logó" className='col-4'/>
+                        <img src="../public/holloko_masolata.jpg" alt="Hollókő" id='holloko'/>
                         
                 </div>
-                <div>
+                <div className='col-4 float-start' id='kozep'>
                     <h3>Falusi szálláshely fajtái</h3>
 
                       <ul>
@@ -32,9 +32,13 @@ function App() {
                         <li>Sátorozóhely: csak valamelyik falusi szálláshely típus mellett, mintegy azt kiegészítve üzemeltethető az előírt feltételek megléte esetén. Pl.: falusi vendégház sátorozóhellyel.</li>
                       </ul>
                 </div>
-                <div>
+                <div id='jobb' className='col-4 float-start'>
                   <h3>A hét törpe fogadó</h3>
-
+                  <ul>
+                    <li>Ruhásszekrény</li>
+                    <li>Saját fürdőszoba zuhanytálca</li>
+                    <li>WC (fürdőszobával egyben)</li>
+                  </ul>
                 </div>
           </div>
         </div>
