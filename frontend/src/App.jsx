@@ -1,60 +1,33 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fogado.css'
-
+import './App.css'
+import Top from './components/Top';
+import Bal from './components/Bal';
+import Kozep from './components/Kozep';
+import Jobb from './components/Jobb';
+import BBal from './components/BBal';
+import BJobb from './components/BJobb';
 function App() {
   
 
   return (
     <>
-      <div>
-        <div>
-          <img src="top.jpg" alt="top" className=' bg-fej mx-auto d-block'/>
-        </div>
-      </div>
-        <div id='alles' className='ontainer text-center'>
-          <div>
-                <div className='col-4 float-start' id='bal'>
-                  <h3>Napraforgós Nemzeti Tanúsító Védjegy célja</h3>
-                    A falusi szálláshelyek napraforgós Nemzeti Tanúsító Védjegye a FATOSZ által több mint tíz éve létrehozott, és működtetett minősítési rendszer alapjaira épülve 2011 óta a minőségi falusi turizmus szimbóluma. A védjegy alapvető célja, hogy – összhangban az egyes szálláshelyek működtetéséről szóló 239/2009. Korm. rendeletben foglaltakkal – garanciát nyújtson a szálláshely szolgáltatás minőségének megfelelő színvonalára.  A falusi vendégházak 1-4 napraforgós besorolást nyerhetnek el a külső, belső megjelenés, a felszereltség, a szolgáltatások színvonala, valamint a szállásadó személyes felkészültségének, szakmai képzettségének függvényében. <br />
-                        <p>Tájékoztató oldal</p>
-                        <img src="logo.png" alt="logó" className='col-4'/>
-                        <img src="../public/holloko_masolata.jpg" alt="Hollókő" id='holloko'/>
-                        
-                </div>
-                <div className='col-4 float-start' id='kozep'>
-                    <h3>Falusi szálláshely fajtái</h3>
-
-                      <ul>
-                        <li>Vendégszoba: a vendégek rendelkezésére bocsátható önálló lakóegység, amely egy lakóhelyiségből, és a minősítéstől függően a hozzátartozó mellékhelyiségekből áll.</li>
-                        <li>Lakrész: önálló épület kettő, illetve több szobából álló lehatárolt része a minősítéstől függően hozzátartozó mellékhelyiségekkel együtt</li>
-                        <li>Vendégház: önálló épület, több szobával, mellékhelyiségekkel és főzési lehetőséggel rendelkező lakó-, illetve üdülőegység, családok vagy kisebb csoportok elszállásolására.</li>
-                        <li>Sátorozóhely: csak valamelyik falusi szálláshely típus mellett, mintegy azt kiegészítve üzemeltethető az előírt feltételek megléte esetén. Pl.: falusi vendégház sátorozóhellyel.</li>
-                      </ul>
-                </div>
-                <div id='jobb' className='col-4 float-start'>
-                  <h3>A hét törpe fogadó</h3>
-                  <ul>
-                    <li>Ruhásszekrény</li>
-                    <li>Saját fürdőszoba zuhanytálca</li>
-                    <li>WC (fürdőszobával egyben)</li>
-                  </ul>
-                </div>
+      <div id='Main' className='container mx-auto'> 
+        <Top />
+        <div className='container'>
+          <div className='row'>
+            <Bal />
+            <Kozep />
+            <Jobb />
           </div>
-        </div>
-          <div>
-            <div>
-                <div>
-                    <h3>A vendégszobák foglalatsága</h3>
-                    <div>
-
-                </div>
-                <div>
-                    <h3>A szobák kihasználtsága:</h3>
-                </div>
+          <div className='row'>
+            <BBal />
+            <BJobb />
             </div>
           </div>
         </div>
+      
     </>
   )
 }

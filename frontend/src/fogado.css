@@ -51,10 +51,7 @@ a {
 #valasz{
   visibility:hidden;
 }
-#alles{
-  width: 1000px;
-  height: 1000px;
-}
+
 #bal{
   background-color: #c5c599;
 }
@@ -66,8 +63,50 @@ a {
   margin-right: auto;
   margin-top: 20px;
   margin-bottom: 20px;
+  padding: 5px;
+  border: black solid 1px;
+  background-color: white;
 }
 #jobb{
   background-color: #c5c599;
   
+}
+#Main{
+  width: 1000px;
+}
+#top{
+  width: 900px;
+}
+#linkes{
+  color: darkblue;
+  font-size: 20px;
+  font-weight: bold;
+}
+#ketagyas{
+  width: 300px;
+  display: block;
+  padding: 5px;
+  border: black solid 1px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+.table1 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.th1 {
+  border: 1px solid #afaf87;
+  text-align: left;
+  padding: 8px;
+}
+
+.tr1:nth-child(even) {
+  background-color: #a6a685;
+}
+#szobak{
+  width: 90%;
+  height: 50px;
 }

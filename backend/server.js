@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
 //szobak információinak a leírása
 app.get("/szobak/", (req, res) => {
-    const sql = "SELECT szobak.sznev, szobak.agy FROM szobak;";
+    const sql = "SELECT szobak.szazon, szobak.sznev, szobak.agy FROM szobak;";
     db.query(sql, (err, result) => {
         if (err) return res.json("Hiba a lekérdezés során");
         return res.json(result);
