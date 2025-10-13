@@ -38,7 +38,7 @@ app.get("/szobak/:szoba", (req, res) => {
 });
 //vendégek számának és a foglalt éjszakák számának a lekérdezése szobánként
 app.get("/vendej", (req, res) => {
-    const sql = "SELECT szobak.sznev, Count(foglalasok.vendeg) AS 'vendegek szama', SUM(foglalasok.tav-foglalasok.erk) AS 'foglalt éjszakák száma' FROM fogado.foglalasok join szobak ON szobak.szazon = foglalasok.szoba group by szobak.sznev ORDER BY Count(foglalasok.vendeg) ASC;";
+    const sql = "SELECT szobak.szazon, szobak.sznev, Count(foglalasok.vendeg) AS 'vendegek szama', SUM(foglalasok.tav-foglalasok.erk) AS 'foglalt éjszakák száma' FROM fogado.foglalasok join szobak ON szobak.szazon = foglalasok.szoba group by szobak.sznev ORDER BY Count(foglalasok.vendeg) ASC;";
     db.query(sql, (err, result) => {
         if (err) return res.json("Hiba a lekérdezés során");
         return res.json(result);
@@ -46,7 +46,7 @@ app.get("/vendej", (req, res) => {
 });
 //szobák foglalásainak a lekérdezése
 app.get("/foglalt/:szoba", (req, res) => {
-    const sql = "select vendegek.vnev, foglalasok.erk, foglalasok.tav FROM fogado.foglalasok join vendegek ON vendegek.vsorsz = foglalasok.vendeg join szobak ON szobak.szazon = foglalasok.szoba where szobak.sznev = ? ORDER BY vnev asc;";
+    const sql = "select vendegek.vsorsz, vendegek.vnev, foglalasok.erk, foglalasok.tav FROM fogado.foglalasok join vendegek ON vendegek.vsorsz = foglalasok.vendeg join szobak ON szobak.szazon = foglalasok.szoba where szobak.sznev = ? ORDER BY vnev asc;";
     db.query(sql, [req.params.szoba], (err, result) => {
         if (err) return res.json("Hiba a lekérdezés során");
         return res.json(result);

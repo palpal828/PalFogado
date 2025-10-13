@@ -1,27 +1,5 @@
 import React, {useState, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-function Gomb(){
-    const [szoba, setSzoba] = useState([]); 
-    const [loading, setLoading] = useState(true); 
-    const [error, setError] = useState(null); 
-    
-
-    useEffect(() => {
-        fetch(`http://localhost:3001/foglalt/${szoba}`)
-        .then((response) => response.json())
-        .then((szoba) => {
-            setSzoba(szoba);
-            setLoading(false);
-        })
-        .catch((error) => {
-            setError(error);
-            setLoading(false);
-        });
-        
-    }, []);
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
-}
 function BJobb() {
     const [data, setData] = useState([]); 
     const [loading, setLoading] = useState(true); 
@@ -55,11 +33,11 @@ function BJobb() {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((szoba) => (
-                        <tr key={szoba.szazon}>
-                            <td>{szoba.sznev}</td>
-                            <td>{szoba["vendegek szama"]}</td>
-                            <td>{szoba["foglalt éjszakák száma"]}</td>
+                    {data.map((data) => (
+                        <tr key={data.szazon}>
+                            <td>{data.sznev}</td>
+                            <td>{data["vendegek szama"]}</td>
+                            <td>{data["foglalt éjszakák száma"]}</td>
                         </tr>
                     ))}
                 </tbody>
