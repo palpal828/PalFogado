@@ -6,7 +6,7 @@ function BBal({ szoba, setSzoba }) {
     const [foglal, setFoglal] = useState([]);
     const [loading, setLoading] = useState(true); 
     const [error, setError] = useState(null); 
-    const [szobasok, setSzobasok] = useState(null);
+    
     async function buttonFetch(){
         console.log(szoba)
         setLoading(true);
@@ -20,27 +20,9 @@ function BBal({ szoba, setSzoba }) {
         }
         finally{
             setLoading(false);
+            console.log(foglal);
         }
-            setSzobasok( 
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Szoba neve</th>
-                            <th>Vendégek száma</th>
-                            <th>foglalt éjszakák száma</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {foglal.map((fog) => (
-                            <tr key={fog.vsorsz}>
-                                <td>{fog.vnev}</td>
-                                <td>{fog.erk}</td>
-                                <td>{fog.tav}</td>
-                            </tr>
-                        ))}
-                    </tbody>    
-                </table>
-            );
+            
     }
     useEffect(() => {
         fetch(`http://localhost:3001/szobak/`)
@@ -67,6 +49,7 @@ function BBal({ szoba, setSzoba }) {
                 <div>
                     <p>Válassza ki, melyik szoba adatait szeretné látni!</p> <br />
                     <select name="szobak" value={szoba || ""} id="szobak" onChange={(e) => setSzoba(e.target.value)} >
+                    <option value="" disabled>-- Válassz szobát! --</option>
                     {data.map((szoba) => (
                         <option key={szoba.szazon} value={szoba.sznev} >{szoba.sznev}</option>
                       )
@@ -74,7 +57,26 @@ function BBal({ szoba, setSzoba }) {
                     </select>
                     <br /><br />
                     <button onClick={buttonFetch}>Kiválaszt</button>
-                    {szobasok && szobasok}
+                    {foglal && foglal != "" &&  
+                        <table className="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Szoba neve</th>
+                                    <th>Vendégek száma</th>
+                                    <th>foglalt éjszakák száma</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {foglal.map((fog) => (
+                                    <tr key={fog.vsorsz}>
+                                        <td>{fog.vnev}</td>
+                                        <td>{fog.erk}</td>
+                                        <td>{fog.tav}</td>
+                                    </tr>
+                                ))}
+                            </tbody>    
+                        </table>
+                    }
                 </div>
             </div>
                 
