@@ -13,10 +13,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SzobaW from './components/szobaW';
 
 function App() {
-  
   const [foglal, setFoglal] = useState([]);
-  
   const [szoba, setSzoba] = useState(null);
+  
   return (
     <>
       <BrowserRouter>
