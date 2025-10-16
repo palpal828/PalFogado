@@ -1,9 +1,9 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Kozep() {
+function Kozep(props) {
     return(
-    <div className='col-md-4 col-sm-6'>
+    <div id="kozep" className={props.className}>
         <h3>Falusi szálláshely fajtái</h3>
         <ul>
             <li>Vendégszoba: a vendégek rendelkezésére bocsátható önálló lakóegység, amely egy lakóhelyiségből, és a minősítéstől függően a hozzátartozó mellékhelyiségekből áll.</li>

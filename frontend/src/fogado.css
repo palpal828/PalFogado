@@ -74,9 +74,7 @@ a {
 #Main{
   width: 1000px;
 }
-#top{
-  width: 900px;
-}
+
 #linkes{
   color: darkblue;
   font-size: 20px;
@@ -95,13 +93,14 @@ a {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  margin: auto;
 }
 
 .th1 {
   border: 1px solid #afaf87;
   text-align: left;
   padding: 8px;
+  width: 50%;
+  text-align: center;
 }
 
 .tr1:nth-child(even) {

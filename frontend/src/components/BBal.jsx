@@ -1,27 +1,17 @@
 import React, { useState, useEffect, use } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom";
 
-function BBal({ szoba, setSzoba }) {
+function BBal({foglal, setFoglal, szoba, setSzoba}) {
     const [data, setData] = useState([]); 
-    const [foglal, setFoglal] = useState([]);
+    
     const [loading, setLoading] = useState(true); 
     const [error, setError] = useState(null); 
     
     async function buttonFetch(){
+        setSzoba(document.getElementById("szobak").value);
         console.log(szoba)
-        setLoading(true);
-        try{
-            const res = await fetch(`http://localhost:3001/foglalt/${szoba}`);
-            const json = await res.json();
-            setFoglal(json);
-        }
-        catch(error){
-            console.error("fetch failed");
-        }
-        finally{
-            setLoading(false);
-            console.log(foglal);
-        }
+        
             
     }
     useEffect(() => {
@@ -37,6 +27,27 @@ function BBal({ szoba, setSzoba }) {
         });
         
     }, []);
+    useEffect(() => {if(!szoba) return;
+        async function fetchData() {
+          setLoading(true);
+            try{
+                const res = await fetch(`http://localhost:3001/foglalt/${szoba}`);
+                const json = await res.json();
+                setFoglal(json);
+            }
+            catch(error){
+                console.error("fetch failed");
+            }
+            finally{
+                setLoading(false);
+                console.log(foglal);
+            }  
+        }
+        fetchData();
+        
+    }, [szoba]);
+
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
     
@@ -48,7 +59,7 @@ function BBal({ szoba, setSzoba }) {
                 <h3>A vendégszobák foglalatsága</h3>
                 <div>
                     <p>Válassza ki, melyik szoba adatait szeretné látni!</p> <br />
-                    <select name="szobak" value={szoba || ""} id="szobak" onChange={(e) => setSzoba(e.target.value)} >
+                    <select name="szobak" value={szoba || ""} id="szobak" onChange={buttonFetch} >
                     <option value="" disabled>-- Válassz szobát! --</option>
                     {data.map((szoba) => (
                         <option key={szoba.szazon} value={szoba.sznev} >{szoba.sznev}</option>
@@ -56,27 +67,9 @@ function BBal({ szoba, setSzoba }) {
                     )}
                     </select>
                     <br /><br />
-                    <button onClick={buttonFetch}>Kiválaszt</button>
-                    {foglal && foglal != "" &&  
-                        <table className="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Szoba neve</th>
-                                    <th>Vendégek száma</th>
-                                    <th>foglalt éjszakák száma</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {foglal.map((fog) => (
-                                    <tr key={fog.vsorsz}>
-                                        <td>{fog.vnev}</td>
-                                        <td>{fog.erk}</td>
-                                        <td>{fog.tav}</td>
-                                    </tr>
-                                ))}
-                            </tbody>    
-                        </table>
-                    }
+                    <Link to="/szoba" ><button>Kiválaszt</button></Link>
+                    
+                    
                 </div>
             </div>
                 

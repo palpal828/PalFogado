@@ -10,30 +10,35 @@ import BBal from './components/BBal';
 import BJobb from './components/BJobb';
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SzobaW from './components/szobaW';
+
 function App() {
-  const [szoba, setSzoba] = useState(null);
   
+  const [foglal, setFoglal] = useState([]);
+  
+  const [szoba, setSzoba] = useState(null);
   return (
     <>
+      <BrowserRouter>
       <div id='Main' className='container mx-auto'> 
-        <Top />
+        <Top className="col-12"/>
         <div className='container'>
           <div className='row'>
-            <Bal />
-            <Kozep />
-            <Jobb />
+            <Routes>
+              <Route path='/' element={<><Bal className="col-4"/><Kozep className="col-4"/><Jobb className="col-4"/></>} />
+              <Route path='/szoba' element={<><Kozep className="col-6"/> <Jobb className="col-6"/></>} />
+            </Routes>
+            
           </div>
           <div className='row'>
-            <BrowserRouter>
-              <Routes> 
-                <Route path='/' element={<><BBal szoba={szoba} setSzoba={setSzoba}/> <BJobb /></>} />
-                <Route path='/:szoba' element={<BBal szoba={szoba} setSzoba={setSzoba}/>} />
-              </Routes>
-            </BrowserRouter>
-            
+            <Routes> 
+              <Route path='/' element={<><BBal foglal={foglal} setFoglal={setFoglal} szoba={szoba} setSzoba={setSzoba} /> <BJobb /></>} />
+              <Route path='/szoba' element={<SzobaW foglal={foglal} szoba={szoba}/>} />
+            </Routes>
           </div>
         </div>
       </div>
+      </BrowserRouter>
     </>
   )
 }

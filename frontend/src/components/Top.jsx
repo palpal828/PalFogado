@@ -4,8 +4,8 @@ import '../fogado.css'
 
 function Top() {
   return (
-    <div className="col-12">
-        <img src="../top.jpg" alt="top" id="top"/>
+    <div>
+        <img src="../top.jpg" alt="top" id="top" className="col-12"/>
     </div>
   );
 }
